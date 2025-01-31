@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "BUILD_PATH='./dist' react-router build && node vercel/prepare.js  ",
+    "build": "react-router build && node vercel/prepare.js  ",
     "dev": "node ./dev-server.js",
     "typecheck": "react-router typegen && tsc"
   },
