@@ -10,7 +10,7 @@ function RegisterPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg">
+    <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
       <h2 className="text-2xl font-semibold mb-6 text-center">Register</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
