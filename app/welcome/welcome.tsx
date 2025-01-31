@@ -1,5 +1,6 @@
 import logoDark from "./logo-dark.svg";
 import logoLight from "./logo-light.svg";
+import logoSaving from "../assets/logo.jpg";
 
 export function Welcome() {
   return (
@@ -13,7 +14,7 @@ export function Welcome() {
         </p>
         <div className="flex justify-center mt-6">
           <img
-            src="https://via.placeholder.com/300"
+            src={logoSaving}
             alt="Tabungan"
             className="rounded-lg shadow-lg animate__animated animate__fadeIn animate__delay-3s"
           />
