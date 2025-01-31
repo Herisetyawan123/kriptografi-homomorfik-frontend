@@ -1,7 +1,7 @@
 import React, { useState, type FormEvent } from 'react';
 
 function RegisterPage() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e: FormEvent) => {
@@ -14,11 +14,21 @@ function RegisterPage() {
       <h2 className="text-2xl font-semibold mb-6 text-center">Register</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-sm font-medium">Username</label>
+          <label className="block text-sm font-medium">Nama</label>
           <input
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full p-3 border rounded-md mt-2"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium">Email</label>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
             className="w-full p-3 border rounded-md mt-2"
           />
