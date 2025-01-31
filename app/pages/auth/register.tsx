@@ -1,6 +1,6 @@
 import React, { useState, type FormEvent } from 'react';
 
-function Register() {
+function RegisterPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -39,4 +39,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default RegisterPage;
