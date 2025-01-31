@@ -16,6 +16,7 @@ export function Welcome() {
           <img
             src={logoSaving}
             alt="Tabungan"
+            width={190}
             className="rounded-lg shadow-lg animate__animated animate__fadeIn animate__delay-3s"
           />
         </div>
