@@ -5,10 +5,11 @@ class Api {
   static login = "/api/login"
   static register = "/api/register"
   static logout = "/api/logout"
+  static dashboard = "/api/dashboard"
   headers = {};
   token: string | null = null;
 
-  static async get(endpoint: string, auth: boolean = false, header: Object | null) {
+  static async get(endpoint: string, auth: boolean = false, header: Object | null = null) {
     let headers: any = {
       "Content-Type": "application/json",
     }
@@ -18,7 +19,7 @@ class Api {
 
     if (auth) {
       token = SessionApp.get("token");
-      if (token) {
+      if (token == null) {
         throw "Unauthorization";
       }
       headers = {
