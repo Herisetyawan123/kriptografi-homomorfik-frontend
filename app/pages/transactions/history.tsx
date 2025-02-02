@@ -5,15 +5,7 @@ import LoadingPage from '../loading/loading';
 import { clearTimeout } from 'timers';
 
 export default function HistoryPage() {
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const time = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(time);
-  }, [])
+  const [loading, setLoading] = useState<boolean>(false);
 
   if (loading) {
     return <LoadingPage />;
@@ -25,7 +17,8 @@ export default function HistoryPage() {
 
       {
         historyStatic.map(
-          (value) => <CardHistory
+          (value, idx) => <CardHistory
+            key={idx}
             amount={value.amount}
             description={value.description}
             type={value.type} />
