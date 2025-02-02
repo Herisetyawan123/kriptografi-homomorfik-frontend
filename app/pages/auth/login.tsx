@@ -2,6 +2,7 @@ import React, { useState, type FormEvent } from 'react';
 import Api from '~/action/api';
 import { useNavigate } from "react-router";
 import SessionApp from '~/action/session';
+import { useAuth } from '~/context/auth-context';
 
 function LoginPage() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -9,6 +10,7 @@ function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate(); // Hook untuk navigasi
+  const { login } = useAuth()
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -25,7 +27,7 @@ function LoginPage() {
       let result = await response.json();
       if (response.status === 200) {
         setLoading(false)
-        SessionApp.set("token", result["token"])
+        login(result["token"]);
         return navigate('/saldo')
       } else {
         setError('Login gagal. Periksa kembali email dan password.');

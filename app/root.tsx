@@ -10,6 +10,8 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 import { MyAppNav } from "./components/navbar";
+import { useEffect } from "react";
+import { AuthProvider } from "./context/auth-context";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -34,8 +36,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <MyAppNav />
-        {children}
+        <AuthProvider>
+          <MyAppNav />
+          {children}
+        </AuthProvider>
         <ScrollRestoration />
         <Scripts />
       </body>

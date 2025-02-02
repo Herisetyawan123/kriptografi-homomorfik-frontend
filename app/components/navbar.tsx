@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
+import { redirect, useNavigate } from "react-router";
 import { NavLink } from "react-router";
-import SessionApp from "~/action/session";
+import { useAuth } from "~/context/auth-context";
 
 export function MyAppNav() {
-  const [auth, setAuth] = useState<boolean>(false);
+  const { isAuthenticated, logout } = useAuth();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    let token = SessionApp.get("token")
-    if (token != null) {
-      setAuth(true)
-    }
-  }, [])
+  const logoutHandle = () => {
+    logout()
+    return navigate("/login");
+  }
 
   return (
     <nav className="bg-white text-black sticky top-0 py-5 flex justify-center gap-10 shadow">
@@ -18,13 +17,13 @@ export function MyAppNav() {
         Home
       </NavLink>
       {
-        auth ? (
+        isAuthenticated ? (
           <>
             <NavLink to="/saldo" className="hover:scale-110 duration-200 font-medium">Saldo information</NavLink>
             <NavLink to="/topup" className="hover:scale-110 duration-200 font-medium">Top Up</NavLink>
             <NavLink to="/withdraw" className="hover:scale-110 duration-200 font-medium">Withdraw</NavLink>
             <NavLink to="/history" className="hover:scale-110 duration-200 font-medium">Transaction</NavLink>
-            <NavLink to="/login" className="hover:scale-110 duration-200 font-medium">Logout</NavLink>
+            <button onClick={logoutHandle} className="hover:scale-110 duration-200 font-medium cursor-pointer">Logout</button>
           </>
         ) : (
           <>
