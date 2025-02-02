@@ -21,18 +21,14 @@ export default function TopupPage() {
   const topup = async () => {
     setLoading(true)
     // try {
-    let body = {
+    let response = await Api.post(Api.topup, {
       "amount": saldo.amount,
       "description": saldo.description
-    }
-    let response = await Api.post(Api.topup, {
-      "amount": 100000,
-      "description": "heheheh"
     }, true)
     let result = await response.json();
     if (response.status == 200) {
       setLoading(false)
-      navigate('/history')
+      navigate('/saldo')
       return
     }
     setError(result["message"])

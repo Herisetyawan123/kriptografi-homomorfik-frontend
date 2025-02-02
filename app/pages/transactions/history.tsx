@@ -6,6 +6,7 @@ import LoadingPage from '../loading/loading';
 export default function HistoryPage() {
   const [loading, setLoading] = useState<boolean>(true);
 
+
   useEffect(() => {
     const time = setTimeout(() => {
       setLoading(false);
