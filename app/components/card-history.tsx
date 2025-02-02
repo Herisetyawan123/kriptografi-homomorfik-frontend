@@ -17,7 +17,11 @@ export default function CardHistory({ amount, description, type }: cardProps) {
 
       </div>
       <div>
-        <span className={`${type == TypeEnum.Topup ? 'bg-green-500' : 'bg-red-500'} text-white px-4 py-2 rounded-2xl text-sm`}>top up</span>
+        <span className={`${type == TypeEnum.Topup ? 'bg-green-500' : 'bg-red-500'} text-white px-4 py-2 rounded-2xl text-sm`}>
+          {
+            TypeEnum.Topup == type ? "Topup" : "Withdraw"
+          }
+        </span>
       </div>
     </div>
 

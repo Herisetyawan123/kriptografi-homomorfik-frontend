@@ -8,6 +8,7 @@ class Api {
   static topup = "/api/topup"
   static withdraw = "/api/withdraw"
   static dashboard = "/api/dashboard"
+  static transactions = "/api/transactions"
   headers = {};
   token: string | null = null;
 
