@@ -5,6 +5,8 @@ class Api {
   static login = "/api/login"
   static register = "/api/register"
   static logout = "/api/logout"
+  static topup = "/api/topup"
+  static withdraw = "/api/withdraw"
   static dashboard = "/api/dashboard"
   headers = {};
   token: string | null = null;
@@ -43,11 +45,12 @@ class Api {
 
     if (auth) {
       token = SessionApp.get("token");
-      if (token) {
+      if (!token) {
         throw "Unauthorization";
       }
       headers = {
-        "Authorization": `Bearer ${token}`
+        "Authorization": `Bearer ${token}`,
+        ...headers
       }
     }
 
